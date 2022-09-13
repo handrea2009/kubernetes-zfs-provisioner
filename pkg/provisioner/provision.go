@@ -41,7 +41,7 @@ func (p *ZFSProvisioner) Provision(ctx context.Context, options controller.Provi
 	storageRequest := options.PVC.Spec.Resources.Requests[v1.ResourceStorage]
 	storageRequestBytes := strconv.FormatInt(storageRequest.Value(), 10)
 	properties[RefQuotaProperty] = storageRequestBytes
-	properties[RefReservationProperty] = storageRequestBytes
+	properties[RefReservationProperty] = "none"
 	properties[ManagedByProperty] = p.InstanceName
 	properties[ReclaimPolicyProperty] = string(reclaimPolicy)
 
